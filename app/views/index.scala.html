@@ -1,0 +1,35 @@
+@(rows:List[HotelPeop], search:Option[Search])
+
+@main("Welcome to Play") {
+
+@helper.form(action = routes.HomeController.searchPost()) {
+    @if(search.isDefined){
+      Birthday<input name="yyyydd" type="text" value="@search.get.yyyydd"/>
+      Address<input name="address" type="text" value="@search.get.address"/>
+    }else{
+      Birthday<input name="yyyydd" type="text"/>
+      Address<input name="address" type="text"/>
+    }
+    <input name="submit_btn" type="submit" value="Submit" />
+}
+
+<table border="1">
+    @for(row <- rows){
+    <tr>
+        <td>@row.id</td>
+        <td>@row.CtfId</td>
+        <td>@row.Birthday</td>
+        <td>@row.Name</td>
+        <td>@row.Address</td>
+        <td><a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=@row.Mobile">@row.Mobile</a></td>
+        <td><a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=@row.Tel">@row.Tel</a></td>
+        <td><a target="_blank" href="https://www.baidu.com/s?ie=UTF-8&wd=@row.CTel">@row.CTel</a></td>
+        <td><button id="@row.id" onclick="del(@row.id)">del</button></td>
+    </tr>
+    }
+</table>
+<br>
+@for(idx <- 0 to 40){
+<a href="/page/@idx">@idx</a>
+}
+}

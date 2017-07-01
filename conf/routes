@@ -1,0 +1,8 @@
+GET     /                           controllers.HomeController.index
+GET     /page/:idx                  controllers.HomeController.page(idx:Int)
+GET     /del/:id                    controllers.HomeController.del(id:Int)
+POST    /search                     controllers.HomeController.searchPost
+
+GET     /javascriptRoutes           controllers.HomeController.javascriptRoutes
+
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
